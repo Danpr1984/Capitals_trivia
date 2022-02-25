@@ -31,4 +31,3 @@ random_bad_phrases = ['Awful guess!', 'That was an easy one!', "You'll catch the
 names = ['d', 'r']
 total_score = ['Uno', 'Dos']
 result = {names[i]: total_score[i] for i in range(len(names))}
-print(result)

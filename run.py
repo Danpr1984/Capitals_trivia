@@ -7,6 +7,7 @@ from countryinfo import CountryInfo
 names = []
 total_score = []
 used_countries = []
+rounds_attempts = []
 
 
 def number_of_players(names):
@@ -14,9 +15,9 @@ def number_of_players(names):
     This function will give the user the option to select the amount of 
     players and their names
     """
-    welcome = ("Welcome to Capital Trivia!\n")
+    welcome = ("Welcome to CAPITAL TRIVIA!\n")
     print(welcome)
-    teasing_message = ("Did you actually learn something at school? :)\nProve it by getting correct answers!\n")
+    teasing_message = ("Did you actually learn something in school? :)\nProve it by guessing as many capitals as you can!\n")
     print(teasing_message)
     players = input("How many players will be playing? ")
     contador = 1
@@ -31,8 +32,10 @@ def number_of_players(names):
 
 
 
-def compare(country):
-    """This function checks if any country is repeating in the questions
+def validate(country):
+    """
+    This function checks if any country is repeating in the questions and that the input
+    is correct
     """
     if country in used_countries:
         return True
@@ -46,39 +49,40 @@ def questions(number):
     positive_feedback = random.choice(list(random_good_phrases))
     negative_feedback = random.choice(list(random_bad_phrases))
     for n in number:
+        attempts = 0
         score = 0
         print(f"It's your turn {n}  \n")
         continues = True
-        while (continues):
+        while (continues): 
             count_test = random.choice(list(countries))
             country = count_test
             used_countries.append(country)
-            used = compare(country)
-            compare(country)
+            used = validate(country)
+            validate(country)
             print(f"What is the capital of {country}\n")
             answer = input('Choose a capital: \n')
             capital = CountryInfo(country).capital()
             if answer == capital:
+                continues = True
                 print(f'Correct!  {positive_feedback}\n')
                 score += 1
-                continues = True
+                total_score.append(int(score))
                 if score == 1:
                     print(f"Your currently have {score} point")
                 else:
                     print(f"Your currently have {score} points")
             else:
+                continues = False
                 print(f'Incorrect! {negative_feedback} The correct answer is {capital}\n')
-                continues = True
-    print("Rounds are over!")        
-    total_score.append(int(score))
+                attempts += 1                    
+                print(attempts)
+                
             #If return is True continue if not repeat como?
 
-
-    
-    
-
             
-#Newgame()
+def Newgame():
+    new_game_question = input("Press ENTER to start a new game or ESC to exit")
+    if 
 
 def main():
     """
@@ -88,6 +92,8 @@ def main():
     questions(number)
     #result = {names[i]: total_score[i] for i in range(len(names))} 
     #print(result)
+    Newgame()
+   
     
 main()
 
