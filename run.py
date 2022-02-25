@@ -1,5 +1,6 @@
 from countries import *
 import random
+import keyboard
 from countryinfo import CountryInfo
 
 
@@ -22,20 +23,17 @@ def number_of_players(names):
     players = input("How many players will be playing? ")
     contador = 1
     for i in range(int(players)):
-        name = input(f"What is your name player {contador} \n")
+        name = input(f"What is your name player {contador}? \n")
         names.append(name)
         contador += 1
 
     name_list = names
     return name_list
-
-
-
-
 def validate(country):
     """
     This function checks if any country is repeating in the questions and that the input
-    is correct
+    is correct. Validation needed for number of players, for str and not numbers when guessing 
+    a capital.
     """
     if country in used_countries:
         return True
@@ -75,15 +73,22 @@ def questions(number):
                 continues = False
                 print(f'Incorrect! {negative_feedback} The correct answer is {capital}\n')
                 attempts += 1                    
-                print(attempts)
+                
                 
             #If return is True continue if not repeat como?
 
             
-def Newgame():
+def newgame():
+    """
+    This function will ask the user if it wants to start a new game 
+    or if it wants to exit the app
+    """
     new_game_question = input("Press ENTER to start a new game or ESC to exit")
-    if 
-
+    if new_game_question  == '':
+         number_of_players(names)
+         print("It's a rematch!") 
+    elif new_game_question == 'ESCAPE':   
+        print("Have a great day! See you next time!")
 def main():
     """
     This function runs the game
@@ -92,7 +97,7 @@ def main():
     questions(number)
     #result = {names[i]: total_score[i] for i in range(len(names))} 
     #print(result)
-    Newgame()
+    newgame()
    
     
 main()
