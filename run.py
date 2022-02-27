@@ -2,17 +2,25 @@ from countries import *
 import random
 import keyboard
 from countryinfo import CountryInfo
+from colorama import Fore
 
 
 
 names = []
-total_score_round1 = []
-total_score_round2 = []
-total_score_round3 = []
-total_score = []
+score_round1 = []
+score_round2 = []
+score_round3 = []
+score_round4 = []
 used_countries = []
-rounds_attempts = []
 
+def game_results(number):
+    zipped_lists = zip(score_round1, score_round2, score_round3, score_round4)
+    total_score = [x + y + z for (x, y, z) in zipped_lists]
+    result = {}
+    for i,j in zip(names,total_score):
+        result[i] = j
+    print(result)
+    
 
 def number_of_players(names):
     """
@@ -20,11 +28,13 @@ def number_of_players(names):
     players and their names
     """
     print("\n")
-    welcome = ("Welcome to CAPITAL TRIVIA!\n")
-    print(welcome)
-    teasing_message = ("Did you actually learn something in school? :)\nProve it by guessing as many capitals as you can!\n")
-    print(teasing_message)
-    players = input("How many players will be playing? ")
+    print(Fore.YELLOW + "Welcome to CAPITAL TRIVIA!")
+    print("********************************")
+    print("\n")
+    print("Did you actually learn something in school? :)")
+    print("\n")
+    print("Prove it by guessing as many capitals as you can!\n")
+    players = input(Fore.LIGHTMAGENTA_EX + "How many players will be playing? (min 1 / max 9) ")
     print("\n")
     contador = 1
     for i in range(int(players)):
@@ -35,8 +45,23 @@ def number_of_players(names):
 
     name_list = names
     return name_list
+"""    
+def check_country():
+    while (validate): 
+        count_test = random.choice(list(countries))
+        country = count_test
+        used_countries.append(country)
+        if country in used_countries:
+            validate = False
+        else:
+            validate = True   
 
-
+def validating_input():    
+    try:
+       
+   except ValueError:
+      print(f")        
+"""            
 def questions(number, rounds_attempts):
     """
     This function will chose from a list of countries a random country
@@ -45,7 +70,9 @@ def questions(number, rounds_attempts):
     negative_feedback = random.choice(list(random_bad_phrases))
     for n in number:
         score = 0
-        print(f"It's your turn {n}  \n")
+        print(Fore.YELLOW + f"It's your turn {n}  \n")
+        #Validate question
+        #Colors for answer
         continues = True
         while (continues):
             validate = True
@@ -58,32 +85,33 @@ def questions(number, rounds_attempts):
                     validate = False
                 else:
                     validate = True   
-
-            print(f"What is the capital of {country}\n")
-            answer = input('Choose a capital: \n')
+            print(Fore.LIGHTMAGENTA_EX + f"What is the capital of {country}\n")
+            answer = input('Write your answer: \n')
+            print("\n")
             capital = CountryInfo(country).capital()
             if answer == capital:
                 continues = True
-                print(f'Correct!  {positive_feedback}\n')
-                print("\n")
+                print(Fore.GREEN + f'CORRECT!  {positive_feedback}\n')
+                
                 score += 1
                 if rounds_attempts == 1:
-                    total_score_round1.append(int(score))
+                    score_round1.append(int(score))
                 elif rounds_attempts == 2:
-                    total_score_round2.append(int(score))
+                    score_round2.append(int(score))
                 elif rounds_attempts == 3:
-                    total_score_round3.append(int(score))    
+                    score_round3.append(int(score))    
                 if score == 1:
-                    print(f"Your currently have {score} point")
+                    print(f"Your currently have {score} point {n}")
+                    print("************************************\n")
                     print("\n")
                 else:
-                    print(f"Your currently have {score} points")
-                    print("\n")
+                    print(f"Your currently have {score} points {n}")
+                    print("******************************************\n")
             else:
                 continues = False
-                print(f'Incorrect! {negative_feedback} The correct answer is {capital}\n')
+                print(Fore.RED + f'INCORRECT! {negative_feedback} The correct answer is {capital}')
+                print("************************************************************************************\n")
                 
-            #If return is True continue if not repeat como?
 
             
 def newgame(number):
@@ -91,14 +119,14 @@ def newgame(number):
     This function will ask the user if it wants to start a new game 
     or if it wants to exit the app
     """
-    new_game_question = input("Press ENTER to start a new game or ESC to exit")
-    if new_game_question  == '':
+    new_game_question = input("Play Again? (Y/N)")
+    if new_game_question  == 'Y':
         number_of_players(names)
+        count_questions = 1
         for q in range(3):
             questions(number, count_questions)
             count_questions += 1
-        print("It's a rematch!") 
-    elif new_game_question == 'ESCAPE':   
+    elif new_game_question == 'N':   
         print("Have a great day! See you next time!")
 
 def main():
@@ -110,13 +138,10 @@ def main():
     for q in range(3):
         questions(number, count_questions)
         count_questions += 1
-    
-    #result = {names[i]: total_score[i] for i in range(len(names))} 
-    #print(result)
+    game_results(number)
     newgame(number)
-   
+#
     
 main()
 
 
-#funcion para comparar y volver a ejectutar
