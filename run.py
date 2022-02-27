@@ -57,10 +57,12 @@ def check_country():
             validate = True   
 
 def validating_input():    
+   while True:
     try:
-       
-   except ValueError:
-      print(f")        
+        players == (2,9)
+        print(f'Number is {x}')
+    except ValueError:
+        print('Not a valid number. Please chose a number between 2 and 9')
 """            
 def questions(number, rounds_attempts):
     """
