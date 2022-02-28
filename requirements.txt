@@ -3,3 +3,4 @@ countryinfo==0.1.2
 iso3166==2.0.2
 keyboard==0.13.5
 pycountry==22.1.10
+colorama==3.8.11
