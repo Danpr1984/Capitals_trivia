@@ -3,6 +3,7 @@ import random
 import keyboard
 from countryinfo import CountryInfo
 from colorama import Fore
+import operator
 
 names = []
 score_round1 = []
@@ -22,6 +23,20 @@ def game_results():
     for i, j in zip(names, total_score):
         result[i] = j
     print(f"And the final score is:\n {result}")
+    mayor=total_score[0]
+    index = 0
+    tie = False
+    for x in range(1,len(names)):
+        if total_score[x] == mayor:
+            tie = True
+        if total_score[x]>mayor:
+            mayor=total_score[x]
+            index = x
+            tie = False
+    if tie: 
+        print("It's a tie! You must play a REMATCH!")
+    else:
+        print(f" And the winner is.......{names[index]}!")      
     names.clear()
     score_round1.clear()
     score_round2.clear()
@@ -132,11 +147,14 @@ def questions(number, rounds_attempts):
                 continues = True
                 print(Fore.GREEN + f'CORRECT!  {positive_feedback}\n')
                 score += 1
+                
             else:
                 continues = False
                 print(Fore.RED + f'INCORRECT! {negative_feedback}\
                 The correct answer is {capital}')
-                print("*****************************************************************\n") 
+                print ("*************************************************************\n"
+                       
+                      )
                 score += 0
                 if rounds_attempts == 1:
                     score_round1.append(int(score))
@@ -144,6 +162,7 @@ def questions(number, rounds_attempts):
                     score_round2.append(int(score))
                 elif rounds_attempts == 3:
                     score_round3.append(int(score))
+                      
 
 
 def newgame(number):
@@ -184,7 +203,6 @@ def main():
         questions(number, count_questions)
         count_questions += 1
     game_results()
-    game_winner()
     newgame(number)
 
 
