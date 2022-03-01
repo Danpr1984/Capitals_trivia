@@ -29,13 +29,6 @@ def game_results():
     used_countries.clear()
 
 
-def game_winner():
-    """
-    This function will compare the scores and will give a game winner or
-    suggest a rematch if it's a tie
-    """
-
-
 def number_of_players(names):
     """
     This function will give the user the option to select the amount of
@@ -58,9 +51,7 @@ def number_of_players(names):
             else:
                 players_count = 1
                 for i in range(int(players)):
-                    name = input(f"What is your name player {players_count}? \n")
-                    
-                    print("\n")
+                    name = validate_name(players_count)
                     names.append(name)
                     players_count += 1
                 name_list = names
@@ -70,8 +61,28 @@ def number_of_players(names):
         except Exception:
             print("Please pick a number between 1-4\n")
             play = "n"
-"""
-def check_country():
+
+
+def validate_name(players_count):
+    """
+    This function validates the input for players names
+    so that they type a name with more than three characters
+    """
+    check_name = True
+    name = ""
+    while (check_name):
+        name = input(f"What is your name player {players_count}? \n")
+        print("\n")
+        if name == '' or len(name) < 3:
+            print("Please type a name with more than 3 letters")
+            check_name = True
+        else:
+            check_name = False
+    return name        
+
+
+def check_country(countries):
+    validate = True
     while (validate):
         count_test = random.choice(list(countries))
         country = count_test
@@ -80,7 +91,21 @@ def check_country():
             validate = False
         else:
             validate = True
-"""
+    return country
+
+
+def validate_capital_input(country):
+    check_capital = True
+    answer = ''
+    while (check_capital):
+        print(Fore.LIGHTMAGENTA_EX + f"What is the capital of {country}?\n")
+        answer = input('Write your answer: \n')
+        if answer == '': 
+            print("Please write an answer")
+            check_capital = True
+        else:
+            check_capital = False
+    return answer    
 
 
 def questions(number, rounds_attempts):
@@ -98,18 +123,8 @@ def questions(number, rounds_attempts):
         print(Fore.YELLOW + f"It's your turn {n}  \n")
         continues = True
         while (continues):
-            validate = True
-            country = ""
-            while (validate):
-                count_test = random.choice(list(countries))
-                country = count_test
-                used_countries.append(country)
-                if country in used_countries:
-                    validate = False
-                else:
-                    validate = True
-            print(Fore.LIGHTMAGENTA_EX + f"What is the capital of {country}?\n")
-            answer = input('Write your answer: \n')
+            country = check_country(countries)
+            answer = validate_capital_input(country)
             answer = answer.lower()
             print("\n")
             capital = CountryInfo(country).capital()
