@@ -10,23 +10,35 @@ score_round2 = []
 score_round3 = []
 used_countries = []
 
+
 def game_results():
     """
-    This app will grab the scores of each round for each player and will 
+    This app will grab the scores of each round for each player and will
     return the total scores with the outcome of the game
-    """    
+    """
     zipped_lists = zip(score_round1, score_round2, score_round3)
     total_score = [x + y + z for (x, y, z) in zipped_lists]
     result = {}
-    for i,j in zip(names,total_score):
+    for i, j in zip(names, total_score):
         result[i] = j
-    print(result)    
-    #run a winner player with whoever got more points or ask for rematch in case there is a tie. 
-    
+    print(f"And the final score is:\n {result}")
+    names.clear()
+    score_round1.clear()
+    score_round2.clear()
+    score_round3.clear()
+    used_countries.clear()
+
+
+def game_winner():
+    """
+    This function will compare the scores and will give a game winner or
+    suggest a rematch if it's a tie
+    """
+
 
 def number_of_players(names):
     """
-    This function will give the user the option to select the amount of 
+    This function will give the user the option to select the amount of
     players and their names
     """
     print("\n")
@@ -37,42 +49,44 @@ def number_of_players(names):
     print("\n")
     print("Prove it by guessing as many capitals as you can!\n")
     play = "n"
-    while play == "n":   
+    while play == "n":
         try:
             players = input(Fore.LIGHTMAGENTA_EX + "How many players will be playing? (min 1 / max 4)\n")
+            
             if (players != "1") and (players != "2") and (players != "3") and (players != "4"):
                 raise Exception()
-            else:    
+            else:
                 players_count = 1
                 for i in range(int(players)):
                     name = input(f"What is your name player {players_count}? \n")
+                    
                     print("\n")
                     names.append(name)
                     players_count += 1
                 name_list = names
                 play = "y"
+                print("Let's get ready to RUMBLE!")
                 return name_list
         except Exception:
-            print("You have to pick a number between 1-4\n")
+            print("Please pick a number between 1-4\n")
             play = "n"
-    
-
-"""    
+"""
 def check_country():
-    while (validate): 
+    while (validate):
         count_test = random.choice(list(countries))
         country = count_test
         used_countries.append(country)
         if country in used_countries:
             validate = False
         else:
-            validate = True   
-"""            
+            validate = True
+"""
+
+
 def questions(number, rounds_attempts):
     """
     This function will chose from a list of countries a random country
     """
-    print("Let's get ready to RUMBLE!")
     print("*****************************\n")
     global score_round1
     global score_round2
@@ -86,14 +100,14 @@ def questions(number, rounds_attempts):
         while (continues):
             validate = True
             country = ""
-            while (validate): 
+            while (validate):
                 count_test = random.choice(list(countries))
                 country = count_test
                 used_countries.append(country)
                 if country in used_countries:
                     validate = False
                 else:
-                    validate = True   
+                    validate = True
             print(Fore.LIGHTMAGENTA_EX + f"What is the capital of {country}?\n")
             answer = input('Write your answer: \n')
             answer = answer.lower()
@@ -103,38 +117,51 @@ def questions(number, rounds_attempts):
                 continues = True
                 print(Fore.GREEN + f'CORRECT!  {positive_feedback}\n')
                 score += 1
-               
             else:
                 continues = False
-                print(Fore.RED + f'INCORRECT! {negative_feedback} The correct answer is {capital}')
-                print("*****************************************************************\n")
+                print(Fore.RED + f'INCORRECT! {negative_feedback}\
+                The correct answer is {capital}')
+                print("*****************************************************************\n") 
                 score += 0
                 if rounds_attempts == 1:
-                     score_round1.append(int(score))
+                    score_round1.append(int(score))
                 elif rounds_attempts == 2:
-                     score_round2.append(int(score))
+                    score_round2.append(int(score))
                 elif rounds_attempts == 3:
-                     score_round3.append(int(score))
+                    score_round3.append(int(score))
 
-            
+
 def newgame(number):
     """
-    This function will ask the user if it wants to start a new game 
+    This function will ask the user if it wants to start a new game
     or if it wants to exit the app
     """
-    new_game_question = input(Fore.YELLOW + "Play Again? (Y/N)")
-    if new_game_question  == 'Y':
-        number_of_players(names)
-        count_questions = 1
-        for q in range(3):
-            questions(number, count_questions)
-            count_questions += 1
-    elif new_game_question == 'N':   
-        print("Have a great day! See you next time!")
-    
+    rematch = "new"
+    while rematch == "new":
+        try:
+            new_game_question = input(Fore.YELLOW + "Play Again? (Y/N)")
+            if (new_game_question != 'Y') and (new_game_question != 'N'):
+                raise Exception()
+            else:
+                if new_game_question  == 'Y':
+                    number_of_players(names)
+                    count_questions = 1
+                    for q in range(3):
+                        questions(number, count_questions)
+                        count_questions += 1
+                    game_results()    
+                else:
+                    new_game_question == 'N'
+                    print("Have a great day! See you next time!")
+                    rematch = "now"
+        except Exception:
+            print("Please type either Y or N")
+            rematch = "new"
+
+
 def main():
     """
-    This function runs the game
+    This function runs all the other functions in order to run the game
     """
     number = number_of_players(names)
     count_questions = 1
@@ -142,9 +169,8 @@ def main():
         questions(number, count_questions)
         count_questions += 1
     game_results()
+    game_winner()
     newgame(number)
 
-    
+
 main()
-
-
