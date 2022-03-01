@@ -14,16 +14,6 @@ def game_results():
     """
     This app will grab the scores of each round for each player and will 
     return the total scores with the outcome of the game
-    
-    
-    print(score_round1)
-    print(score_round2)
-    print(score_round3)
-    total_score = []
-    for i in range(len(names)):
-        score = score_round1[i] + score_round2[i] + score_round3[i]
-        name = names[i]
-        print(name + " scored " + str(score))
     """    
     zipped_lists = zip(score_round1, score_round2, score_round3)
     total_score = [x + y + z for (x, y, z) in zipped_lists]
@@ -66,16 +56,7 @@ def number_of_players(names):
             print("You have to pick a number between 1-4\n")
             play = "n"
     
-"""
-def players_list(number):
-    for i in range(int(players)):
-        name = input(f"What is your name player {contador}? \n")
-        print("\n")
-        names.append(name)
-        contador += 1
-    name_list = names
-    return name_list
-"""    
+
 """    
 def check_country():
     while (validate): 
@@ -86,14 +67,6 @@ def check_country():
             validate = False
         else:
             validate = True   
-
-def validating_input():    
-   while True:
-    try:
-        players == (2,9)
-        print(f'Number is {x}')
-    except ValueError:
-        print('Not a valid number. Please chose a number between 2 and 9')
 """            
 def questions(number, rounds_attempts):
     """
@@ -165,13 +138,12 @@ def main():
     """
     number = number_of_players(names)
     count_questions = 1
-    #players_list(number)
     for q in range(3):
         questions(number, count_questions)
         count_questions += 1
     game_results()
     newgame(number)
-#
+
     
 main()
 
