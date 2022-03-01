@@ -6,7 +6,7 @@ countries = ["Afghanistan", "Albania", "Algeria", "Angola", "Antigua and Barbuda
 "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Eritrea", "Estonia",
 "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
 "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
-"Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait",
+"Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait",
 "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
 "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico",
 "Monaco", "Mongolia", "Morocco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
@@ -17,7 +17,7 @@ countries = ["Afghanistan", "Albania", "Algeria", "Angola", "Antigua and Barbuda
 "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"] 
 
 random_good_phrases = ['You are a genius!', 'Wow lucky shot!', 'You are on fire!', 'Someone did its homework!', 'Is your name Albert Einstein?!']
-random_bad_phrases = ['Awful guess!', 'That was an easy one!', "You'll catch the next one!", "Did you attend your geography lessons?", "Maybe you can sign up to the 5th grade again!"]
+random_bad_phrases = ['Awful guess!', 'That was an easy one!', "You'll catch the next one!", "No geography lessons?", "Go back to 5th grade!"]
 
 
 
