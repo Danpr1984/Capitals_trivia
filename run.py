@@ -158,7 +158,7 @@ def newgame(number):
             count_questions += 1
     elif new_game_question == 'N':   
         print("Have a great day! See you next time!")
-
+    
 def main():
     """
     This function runs the game
