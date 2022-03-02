@@ -66,7 +66,7 @@ def game_results():
     result = {}
     for i, j in zip(names, total_score):
         result[i] = j
-    print(Fore.YELLOW + f"  And the final score is:\n{result}")
+    print(Fore.YELLOW + f"  And the final score is:\n  {result}")
     print("\n")
     highest_score = total_score[0]
     index = 0
@@ -208,7 +208,7 @@ def newgame(number):
     rematch = "new"
     while rematch == "new":
         try:
-            new_game_question = input(Fore.YELLOW + "Play Again? (y/n)")
+            new_game_question = input(Fore.YELLOW + "  Play Again? (y/n)")
             if (new_game_question != 'y') and (new_game_question != 'n'):
                 raise Exception()
             else:
