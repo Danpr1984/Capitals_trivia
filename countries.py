@@ -11,22 +11,12 @@ countries = ["Afghanistan", "Albania", "Algeria", "Angola", "Antigua and Barbuda
 "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico",
 "Monaco", "Mongolia", "Morocco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
 "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
-"Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Somalia", "South Africa",
+"Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Senegal",
+"Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Somalia", "South Africa",
 "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania",
-"Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", 
-"Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"] 
+"Thailand", "Togo", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America",
+"Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Zambia", "Zimbabwe"]
 
 random_good_phrases = ['You are a genius!', 'Wow lucky shot!', 'You are on fire!', 'Someone did its homework!', 'Is your name Albert Einstein?!']
 random_bad_phrases = ['Awful guess!', 'That was an easy one!', "You'll catch the next one!", "No geography lessons?", "Go back to 5th grade!"]
 
-
-
-#def busqueda(pais, country_one, capital_one):
-  #for i in country_one:
-  #if pais == i:
-  #print(capital_one[test])
-#busqueda(country, country_one, capital_one)
-
-#names = ['d', 'r']
-#total_score = ['Uno', 'Dos']
-#result = {names[i]: total_score[i] for i in range(len(names))}
