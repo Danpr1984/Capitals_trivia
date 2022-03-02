@@ -44,7 +44,7 @@ def number_of_players(names):
                     players_count += 1
                 name_list = names
                 play = "y"
-                print("  Let's get ready to RUMBLE!")
+                print(Fore.YELLOW + "  Let's get ready to RUMBLE!")
                 print("  *****************************\n")
                 return name_list
         except Exception:
