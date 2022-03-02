@@ -19,17 +19,17 @@ def number_of_players(names):
     until data is valid.
     """
     print("\n")
-    print(Fore.YELLOW + "Welcome to CAPITAL TRIVIA!")
-    print("********************************")
+    print(Fore.YELLOW + "  Welcome to CAPITAL TRIVIA!")
+    print("  ********************************")
     print("\n")
-    print("Did you actually learn something in school? :)")
+    print("  Did you actually learn something in school? :)")
     print("\n")
-    print("Prove it by guessing as many capitals as you can!\n")
+    print("  Prove it by guessing as many capitals as you can!\n")
     play = "n"
     while play == "n":
         try:
-            print(Fore.LIGHTMAGENTA_EX + "min 1 / max 4")
-            players = input("How many players will be playing? ")
+            print(Fore.LIGHTMAGENTA_EX + "  min 1 / max 4")
+            players = input("  How many players will be playing? ")
             print("\n")
             if ((players != "1") and
                (players != "2") and
@@ -44,11 +44,11 @@ def number_of_players(names):
                     players_count += 1
                 name_list = names
                 play = "y"
-                print("Let's get ready to RUMBLE!")
-                print("*****************************\n")
+                print("  Let's get ready to RUMBLE!")
+                print("  *****************************\n")
                 return name_list
         except Exception:
-            print("Please pick a number between 1-4\n")
+            print("  Please pick a number between 1-4\n")
             play = "n"
 
 
@@ -66,7 +66,7 @@ def game_results():
     result = {}
     for i, j in zip(names, total_score):
         result[i] = j
-    print(Fore.YELLOW + f"And the final score is:\n{result}")
+    print(Fore.YELLOW + f"  And the final score is:\n{result}")
     print("\n")
     highest_score = total_score[0]
     index = 0
@@ -79,10 +79,10 @@ def game_results():
             index = x
             tie = False
     if tie:
-        print("It's a tie! You must play a REMATCH!")
+        print(" It's a tie! You must play a REMATCH!")
         print("\n")
     else:
-        print(f"And the winner is.......{names[index]}!\n")
+        print(f"  And the winner is.......{names[index]}!\n")
         print("\n")
     names.clear()
     score_round1.clear()
@@ -99,10 +99,10 @@ def validate_name(players_count):
     check_name = True
     name = ""
     while (check_name):
-        name = input(f"What is your name player {players_count}? \n")
+        name = input(f"  What is your name player {players_count}? \n  ")
         print("\n")
         if name == '' or len(name) < 2:
-            print("Please type a name with more than 2 letters")
+            print(" Please type a name with more than 2 letters")
             check_name = True
         else:
             check_name = False
@@ -135,10 +135,10 @@ def validate_capital_input(country):
     check_capital = True
     answer = ''
     while (check_capital):
-        print(Fore.LIGHTMAGENTA_EX + f"What is the capital of {country}?\n")
-        answer = input('Write your answer: \n')
+        print(Fore.LIGHTMAGENTA_EX + f"  What is the capital of {country}?\n")
+        answer = input('  Write your answer: \n  ')
         if answer == '':
-            print("Please write an answer")
+            print("  Please write an answer")
             check_capital = True
         else:
             check_capital = False
@@ -163,7 +163,7 @@ def questions(number, rounds_attempts):
     negative_feedback = random.choice(list(random_bad_phrases))
     for n in number:
         score = 0
-        print(Fore.YELLOW + f"It's your turn {n}  \n")
+        print(Fore.YELLOW + f"  It's your turn {n}  \n")
         continues = True
         while (continues):
             country = check_country(countries)
@@ -173,28 +173,28 @@ def questions(number, rounds_attempts):
             capital = CountryInfo(country).capital()
             if answer == capital.lower():
                 continues = True
-                print(Fore.GREEN + f'CORRECT! {positive_feedback}\n')
+                print(Fore.GREEN + f'  CORRECT! {positive_feedback}\n')
                 score += 1
                 if score == 1:
-                    print(f"You've scored {score} point in this round {n}\n")
+                    print(f"  You've scored {score} point this round {n}\n")
                 else:
-                    print(f"You've scored {score} points in this round {n}\n")
+                    print(f"  You've scored {score} points this round {n}\n")
             else:
                 continues = False
-                print(Fore.RED + f"INCORRECT! {negative_feedback}")
-                print(f"The correct answer is {capital}")
+                print(Fore.RED + f"  INCORRECT! {negative_feedback}")
+                print(f"  The correct answer is {capital}")
                 score += 0
                 if rounds_attempts == 1:
                     score_round1.append(int(score))
-                    print(f"Round 1 is over for you {n}")
-                    print ("*************************************\n")
+                    print(f"  Round 1 is over for you {n}")
+                    print ("  *************************************\n")
                 elif rounds_attempts == 2:
                     score_round2.append(int(score))
-                    print(f"Round 2 is over for you {n}")
-                    print ("*************************************\n")
+                    print(f"  Round 2 is over for you {n}")
+                    print ("  *************************************\n")
                 elif rounds_attempts == 3:
-                    print(f"Game is over for you {n}")
-                    print ("*************************************\n")
+                    print(f"  Game is over for you {n}")
+                    print ("  *************************************\n")
                     score_round3.append(int(score))
 
 
@@ -221,10 +221,10 @@ def newgame(number):
                     game_results()
                 else:
                     new_game_question == 'n'
-                    print("\nHave a great day! See you next time!")
+                    print("\n  Have a great day! See you next time!")
                     rematch = "now"
         except Exception:
-            print("Please type either Y or N")
+            print("  Please type either Y or N")
             rematch = "new"
 
 
